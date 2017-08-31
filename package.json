@@ -2,7 +2,7 @@
   "name": "react-lazyload",
   "version": "2.2.7",
   "description": "Lazyload your components, images or anything where performance matters.",
-  "main": "lib/index.js",
+  "main": "src/index.jsx",
   "scripts": {
     "test": "karma start test/karma.conf.js",
     "demo:watch": "webpack-dev-server --inline --config webpack.config.js --content-base examples --port 8721",
