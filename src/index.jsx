@@ -112,6 +112,11 @@ const checkNormalVisible = function checkNormalVisible(component) {
  * @param  {React} component   React component that respond to scroll and resize
  */
 const checkVisible = function checkVisible(component) {
+  if (process.env.NODE_ENV === 'test') {
+    component.visible = true;
+    return component.forceUpdate();
+  }
+
   const node = ReactDom.findDOMNode(component);
   if (!node) {
     return;
@@ -181,7 +186,7 @@ class LazyLoad extends Component {
   }
 
   componentDidMount() {
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production' && process.env.NODE_ENV !== 'test') {
       if (React.Children.count(this.props.children) > 1) {
         console.warn('[react-lazyload] Only one child is allowed to be passed to `LazyLoad`.');
       }
